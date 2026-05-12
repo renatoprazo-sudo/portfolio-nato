@@ -71,25 +71,27 @@
   .service-icon{font-size:24px;margin-bottom:16px}
   .service-name{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;margin-bottom:10px;letter-spacing:-.02em}
   .service-desc{font-size:14px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:20px}
-  .service-price{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);font-weight:500}
+  .service-price{font-family:'DM Mono',monospace;font-size:14px;color:var(--accent);font-weight:600}
   .service-tag{display:inline-block;background:var(--accent-dim);color:var(--accent);font-size:11px;padding:4px 10px;border-radius:20px;margin-top:12px;font-family:'DM Mono',monospace;letter-spacing:.05em}
+  .service-tag.highlight{background:var(--accent);color:#000;font-weight:600;}
  
   /* PORTFOLIO */
   .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-top:56px}
-  .project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+  .project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;height:100%}
   .project-card:hover{border-color:var(--muted2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
-  .project-thumb{height:200px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.03em;position:relative;overflow:hidden}
+  .project-thumb{height:200px;min-height:200px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.03em;position:relative;overflow:hidden;flex-shrink:0}
   .thumb-dental{background:linear-gradient(135deg,#0D1F2D,#1A3A52);color:#5AABDC}
   .thumb-dental2{background:linear-gradient(135deg,#0D1A20,#0F3040);color:#2EC4A0}
   .thumb-dental3{background:linear-gradient(135deg,#1A0D20,#2E1040);color:#A78BDD}
   .project-thumb .browser-bar{position:absolute;top:0;left:0;right:0;height:28px;background:rgba(255,255,255,.05);display:flex;align-items:center;padding:0 12px;gap:6px}
   .browser-dot{width:8px;height:8px;border-radius:50%}
-  .project-info{padding:22px 24px}
+  .project-info{padding:22px 24px;flex-grow:1;display:flex;flex-direction:column;align-items:flex-start}
   .project-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
   .project-name{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px;letter-spacing:-.02em}
   .project-desc{font-size:13px;color:var(--muted);line-height:1.6;font-weight:300}
   .project-tech{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-  .project-view{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--accent);font-family:'DM Mono',monospace;text-decoration:none;margin-top:12px;padding:5px 12px;border:1px solid var(--accent-dim);border-radius:20px;transition:all .2s}
+  .tech-tag{font-size:12px;color:var(--muted2);border:1px solid var(--border);padding:2px 8px;border-radius:12px;}
+  .project-view{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--accent);font-family:'DM Mono',monospace;text-decoration:none;margin-top:auto;padding:5px 12px;border:1px solid var(--accent-dim);border-radius:20px;transition:all .2s;align-self:flex-start;margin-top:20px}
   .project-view:hover{background:var(--accent-dim)}
  
   /* ABOUT */
@@ -149,18 +151,16 @@
 </head>
 <body>
  
-<!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">RP<span>.</span>dev</a>
   <ul class="nav-links">
-    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#servicos">Planos</a></li>
     <li><a href="#portfolio">Portfólio</a></li>
     <li><a href="#sobre">Sobre</a></li>
   </ul>
   <a href="#contato" class="nav-cta">Falar comigo</a>
 </nav>
  
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-blob"></div>
@@ -186,51 +186,43 @@
  
 <div class="line-divider"></div>
  
-<!-- SERVIÇOS -->
 <section id="servicos">
   <span class="section-label reveal">O que eu faço</span>
-  <h2 class="section-title reveal">Serviços</h2>
-  <p class="section-sub reveal">Do projeto simples ao mais completo — com qualidade e prazo garantidos.</p>
+  <h2 class="section-title reveal">Planos e Valores</h2>
+  <p class="section-sub reveal">Trabalho com 3 opções exclusivas para clínicas odontológicas, focadas no seu crescimento e atração de novos pacientes.</p>
  
   <div class="services-grid reveal">
     <div class="service-card">
       <div class="service-num">01</div>
       <div class="service-icon">⚡</div>
-      <div class="service-name">Landing Page</div>
-      <div class="service-desc">Página focada em conversão, ideal para campanhas de tráfego pago e captação de leads. Rápida, leve e otimizada.</div>
-      <div class="service-price">A partir de R$ 800</div>
-      <span class="service-tag">Entrega em 5 dias</span>
+      <div class="service-name">Essencial</div>
+      <div class="service-desc">Landing page de alta conversão, integração com WhatsApp, domínio e hospedagem inclusos. Tudo configurado para captação de leads.</div>
+      <div class="service-price">R$ 1.200 + R$ 250/mês</div>
+      <span class="service-tag">Ideal para começar</span>
     </div>
-    <div class="service-card">
-      <div class="service-num">02</div>
-      <div class="service-icon">🏢</div>
-      <div class="service-name">Site Institucional</div>
-      <div class="service-desc">Site completo para empresas e profissionais liberais. Apresenta seus serviços com credibilidade e gera contatos qualificados.</div>
-      <div class="service-price">A partir de R$ 1.500</div>
-      <span class="service-tag">Entrega em 10 dias</span>
+    
+    <div class="service-card" style="border: 1px solid var(--accent); background: #131313;">
+      <div class="service-num" style="color:var(--accent);">02</div>
+      <div class="service-icon">⭐</div>
+      <div class="service-name">Profissional</div>
+      <div class="service-desc">Site completo, Google Meu Negócio configurado, otimização de SEO local, domínio, hospedagem e 1 atualização mensal.</div>
+      <div class="service-price">R$ 2.200 + R$ 350/mês</div>
+      <span class="service-tag highlight">Mais contratado</span>
     </div>
+    
     <div class="service-card">
       <div class="service-num">03</div>
-      <div class="service-icon">🛒</div>
-      <div class="service-name">Loja Virtual</div>
-      <div class="service-desc">E-commerce completo com catálogo, carrinho, pagamento integrado e painel de gestão de pedidos. Pronto para vender no dia 1.</div>
-      <div class="service-price">A partir de R$ 2.500</div>
-      <span class="service-tag">Entrega em 15 dias</span>
-    </div>
-    <div class="service-card">
-      <div class="service-num">04</div>
-      <div class="service-icon">🔧</div>
-      <div class="service-name">Manutenção Mensal</div>
-      <div class="service-desc">Hospedagem, atualizações de segurança, backups automáticos e suporte prioritário. Seu site sempre no ar e funcionando.</div>
-      <div class="service-price">A partir de R$ 250/mês</div>
-      <span class="service-tag">Recorrente</span>
+      <div class="service-icon">💎</div>
+      <div class="service-name">Premium</div>
+      <div class="service-desc">Tudo do plano Profissional + blog, galeria de resultados, agenda online integrada e envio de relatório mensal de visitantes.</div>
+      <div class="service-price">R$ 3.800 + R$ 500/mês</div>
+      <span class="service-tag">Presença Completa</span>
     </div>
   </div>
 </section>
  
 <div class="line-divider"></div>
  
-<!-- PORTFÓLIO -->
 <section id="portfolio">
   <span class="section-label reveal">Trabalhos recentes</span>
   <h2 class="section-title reveal">Portfólio</h2>
@@ -255,11 +247,11 @@
           <span class="tech-tag">JavaScript</span>
           <span class="tech-tag">SEO Local</span>
         </div>
-        <a class="project-view" href="clinica-sorriso.html" target="_blank">Ver projeto ao vivo →</a>
+        <div class="project-view">Ver projeto ao vivo →</div>
       </div>
     </a>
 
-    <div class="project-card reveal">
+    <a class="project-card reveal" href="dr-henrique.html" target="_blank">
       <div class="project-thumb thumb-dental2">
         <div class="browser-bar">
           <div class="browser-dot" style="background:#ff5f57"></div>
@@ -277,10 +269,11 @@
           <span class="tech-tag">JavaScript</span>
           <span class="tech-tag">Google Ads</span>
         </div>
+        <div class="project-view">Ver projeto ao vivo →</div>
       </div>
-    </div>
+    </a>
 
-    <div class="project-card reveal">
+    <a class="project-card reveal" href="odonto-familia.html" target="_blank">
       <div class="project-thumb thumb-dental3">
         <div class="browser-bar">
           <div class="browser-dot" style="background:#ff5f57"></div>
@@ -298,14 +291,14 @@
           <span class="tech-tag">Elementor</span>
           <span class="tech-tag">Agendamento</span>
         </div>
+        <div class="project-view">Ver projeto ao vivo →</div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
  
 <div class="line-divider"></div>
  
-<!-- SOBRE -->
 <section id="sobre">
   <div class="about-grid">
     <div>
@@ -318,7 +311,6 @@
       <div class="skill-list reveal">
         <span class="skill-pill">WordPress</span>
         <span class="skill-pill">Elementor</span>
-        <span class="skill-pill">WooCommerce</span>
         <span class="skill-pill">HTML & CSS</span>
         <span class="skill-pill">JavaScript</span>
         <span class="skill-pill">React</span>
@@ -336,7 +328,6 @@
   </div>
 </section>
  
-<!-- CONTATO -->
 <section id="contato">
   <div class="contact-inner">
     <span class="section-label reveal">Vamos trabalhar juntos</span>
@@ -355,7 +346,6 @@
   </div>
 </section>
  
-<!-- FOOTER -->
 <footer>
   <p>© 2026 Renato Prazinho — Dev Web</p>
   <div class="footer-links">
@@ -382,4 +372,3 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
 </script>
 </body>
 </html>
- 

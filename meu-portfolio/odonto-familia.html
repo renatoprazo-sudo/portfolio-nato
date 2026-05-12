@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odonto Família — Cuidando de todas as gerações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg: #FAFAFD;
+    --surface: #FFFFFF;
+    --border: #F0EDF4;
+    --accent-dark: #2E1040;
+    --accent: #7D4CDB;
+    --accent-light: #F3EFFF;
+    --accent-lilac: #A78BDD;
+    --text: #2D3748;
+    --muted: #718096;
+    --kids: #FFB020; /* Tom alegre para detalhes infantis */
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Rubik',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+
+  /* UTILS */
+  .container{max-width:1140px;margin:0 auto;padding:0 24px}
+  h1, h2, h3, h4, .logo {font-family:'Nunito',sans-serif;}
+  
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:16px;padding:14px 28px;border-radius:50px;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(125, 76, 219, 0.25)}
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 12px 24px rgba(46, 16, 64, 0.2)}
+  .btn-outline{background:transparent;color:var(--accent);border:2px solid var(--accent-light)}
+  .btn-outline:hover{background:var(--accent-light);border-color:var(--accent-lilac)}
+  
+  /* HEADER */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255, 255, 255, 0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 0;transition:all 0.3s}
+  .header-content{display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:22px;font-weight:900;color:var(--accent-dark);text-decoration:none;display:flex;align-items:center;gap:8px}
+  .logo-icon{background:var(--accent-light);color:var(--accent);width:40px;height:40px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:var(--text);font-weight:500;text-decoration:none;font-size:15px;transition:color 0.2s}
+  .nav-links a:hover{color:var(--accent)}
+
+  /* HERO */
+  .hero{padding:160px 0 100px;position:relative;overflow:hidden}
+  .hero-bg-shape{position:absolute;top:-10%;right:-5%;width:600px;height:600px;background:var(--accent-light);border-radius:50%;z-index:-1}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:#FFF9EB;color:#D97706;font-size:14px;font-weight:600;padding:8px 16px;border-radius:30px;margin-bottom:20px;font-family:'Nunito',sans-serif}
+  .hero h1{font-size:clamp(38px, 4.5vw, 52px);font-weight:900;color:var(--accent-dark);line-height:1.1;margin-bottom:20px}
+  .hero h1 span{color:var(--accent)}
+  .hero p{font-size:18px;color:var(--muted);margin-bottom:32px;max-width:480px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+
+  /* HERO IMAGES */
+  .hero-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative}
+  .hg-img{background:var(--accent-light);border-radius:24px;display:flex;align-items:center;justify-content:center;color:var(--accent-lilac)}
+  .hg-img:nth-child(1){aspect-ratio:3/4;transform:translateY(30px)}
+  .hg-img:nth-child(2){aspect-ratio:3/4}
+  .hg-img svg{width:60px;height:60px;opacity:0.5}
+  
+  /* CONVÊNIOS */
+  .convenios{padding:60px 0;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+  .convenios p{font-size:14px;font-weight:500;color:var(--muted);margin-bottom:24px;text-transform:uppercase;letter-spacing:1px}
+  .logos-grid{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;opacity:0.6}
+  .logo-placeholder{height:40px;width:120px;background:var(--border);border-radius:8px}
+
+  /* SERVIÇOS */
+  .services{padding:100px 0}
+  .section-header{text-align:center;margin-bottom:60px;max-width:600px;margin-left:auto;margin-right:auto}
+  .section-header h2{font-size:36px;font-weight:800;color:var(--accent-dark);margin-bottom:16px}
+  .section-header p{color:var(--muted);font-size:17px}
+  .services-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:32px}
+  .srv-card{background:var(--surface);border:2px solid var(--border);border-radius:24px;padding:40px 32px;text-align:center;transition:all 0.3s;position:relative;overflow:hidden}
+  .srv-card:hover{border-color:var(--accent-lilac);transform:translateY(-8px);box-shadow:0 20px 40px rgba(125, 76, 219, 0.08)}
+  .srv-icon{width:80px;height:80px;margin:0 auto 24px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:40px}
+  .icon-kids{background:#FFF4E5;color:var(--kids)}
+  .icon-family{background:var(--accent-light);color:var(--accent)}
+  .icon-braces{background:#E6FFFA;color:#319795}
+  .srv-card h3{font-size:22px;color:var(--accent-dark);margin-bottom:12px}
+  .srv-card p{color:var(--muted);font-size:15px;margin-bottom:24px}
+  .srv-link{font-weight:600;color:var(--accent);text-decoration:none;font-size:15px;display:inline-flex;align-items:center;gap:4px}
+  .srv-link:hover{color:var(--accent-dark)}
+
+  /* DICAS (BLOG) */
+  .blog{padding:100px 0;background:var(--surface)}
+  .blog-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:40px}
+  .blog-card{display:flex;gap:24px;align-items:center;padding:24px;border-radius:20px;background:var(--bg);border:1px solid var(--border);transition:all 0.3s}
+  .blog-card:hover{background:var(--surface);box-shadow:0 12px 24px rgba(0,0,0,0.04);border-color:var(--accent-light)}
+  .blog-img{width:140px;height:140px;border-radius:16px;background:var(--accent-light);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .blog-tag{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;display:block}
+  .blog-title{font-size:20px;font-weight:700;color:var(--accent-dark);margin-bottom:8px;line-height:1.3}
+  .blog-title a{color:inherit;text-decoration:none}
+  .blog-title a:hover{color:var(--accent)}
+  .blog-excerpt{color:var(--muted);font-size:14px;line-height:1.5}
+
+  /* CTA FINAL */
+  .cta-section{padding:80px 0}
+  .cta-box{background:var(--accent-dark);border-radius:32px;padding:60px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+  .cta-box::before{content:'';position:absolute;top:-50%;left:-10%;width:300px;height:300px;background:var(--accent);border-radius:50%;opacity:0.5;filter:blur(80px)}
+  .cta-box h2{font-size:36px;font-weight:800;margin-bottom:16px;position:relative;z-index:1}
+  .cta-box p{font-size:18px;color:var(--accent-lilac);margin-bottom:32px;position:relative;z-index:1}
+  
+  /* FOOTER */
+  footer{background:var(--surface);padding:40px 0;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:14px}
+
+  /* ANIMATIONS */
+  .reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.16, 1, 0.3, 1)}
+  .reveal.active{opacity:1;transform:translateY(0)}
+
+  @media (max-width: 768px) {
+    .hero-grid, .services-grid, .blog-grid{grid-template-columns:1fr}
+    .hero{padding:120px 0 60px;text-align:center}
+    .hero-actions{justify-content:center}
+    .hero-gallery{margin-top:40px}
+    .hg-img:nth-child(1){transform:translateY(0)}
+    .nav-links{display:none}
+    .blog-card{flex-direction:column;text-align:center}
+    .blog-img{width:100%;height:200px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-content">
+    <a href="#" class="logo">
+      <div class="logo-icon">🦷</div>
+      Odonto Família
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Tratamentos</a></li>
+      <li><a href="#convenios">Convênios</a></li>
+      <li><a href="#blog">Dicas e Blog</a></li>
+    </ul>
+    <a href="#agendar" class="btn btn-primary">Agendar Consulta</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="hero-badge">👶 Especialistas em Odontopediatria</div>
+      <h1>Sorrisos saudáveis para <span>todas as idades.</span></h1>
+      <p>Um ambiente acolhedor e seguro onde o medo de dentista não entra. Cuidamos da saúde bucal do seu bebê até a melhor idade.</p>
+      <div class="hero-actions">
+        <a href="#agendar" class="btn btn-primary">Marcar Avaliação</a>
+        <a href="#convenios" class="btn btn-outline">Ver Convênios</a>
+      </div>
+    </div>
+    
+    <div class="hero-gallery reveal" style="transition-delay: 0.2s;">
+      <div class="hg-img">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <div class="hg-img">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="convenios" id="convenios">
+  <div class="container reveal">
+    <p>Aceitamos os principais convênios</p>
+    <div class="logos-grid">
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+      <div class="logo-placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Nossas Especialidades</h2>
+      <p>Tratamentos completos para garantir que o sorriso da sua família esteja sempre em dia.</p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="srv-card reveal">
+        <div class="srv-icon icon-kids">🧸</div>
+        <h3>Odontopediatria</h3>
+        <p>Condicionamento infantil, prevenção de cáries e acompanhamento do crescimento dos dentinhos de leite.</p>
+        <a href="#" class="srv-link">Saber mais →</a>
+      </div>
+      
+      <div class="srv-card reveal" style="transition-delay: 0.15s;">
+        <div class="srv-icon icon-braces">✨</div>
+        <h3>Ortodontia</h3>
+        <p>Aparelhos preventivos para crianças e alinhadores invisíveis ou tradicionais para adolescentes e adultos.</p>
+        <a href="#" class="srv-link">Saber mais →</a>
+      </div>
+      
+      <div class="srv-card reveal" style="transition-delay: 0.3s;">
+        <div class="srv-icon icon-family">👨‍👩‍👧</div>
+        <h3>Clínica Geral</h3>
+        <p>Limpezas, restaurações, tratamento de gengiva e check-ups anuais para manter a saúde bucal dos adultos.</p>
+        <a href="#" class="srv-link">Saber mais →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Dicas para sua família</h2>
+      <p>Acompanhe nosso blog e aprenda a cuidar melhor do sorriso de quem você ama.</p>
+    </div>
+    
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-img">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lilac)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        </div>
+        <div>
+          <span class="blog-tag">Bebês</span>
+          <h3 class="blog-title"><a href="#">Quando levar meu filho ao dentista pela primeira vez?</a></h3>
+          <p class="blog-excerpt">Descubra a idade ideal para a primeira consulta e como preparar seu pequeno para essa experiência...</p>
+        </div>
+      </div>
+      
+      <div class="blog-card reveal" style="transition-delay: 0.2s;">
+        <div class="blog-img">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-lilac)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <div>
+          <span class="blog-tag">Prevenção</span>
+          <h3 class="blog-title"><a href="#">Qual a melhor pasta de dente para crianças?</a></h3>
+          <p class="blog-excerpt">Com flúor ou sem flúor? Entenda as recomendações dos odontopediatras para cada faixa etária...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="agendar">
+  <div class="container reveal">
+    <div class="cta-box">
+      <h2>Agende uma avaliação hoje mesmo</h2>
+      <p>Nossa equipe está pronta para receber sua família com todo o carinho.</p>
+      <a href="https://wa.me/5519999999999" target="_blank" class="btn" style="background:#fff; color:var(--accent-dark); padding: 18px 36px; font-size: 18px;">
+        Chamar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Clínica Odonto Família. CRO-SP Clínica: 54321. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
