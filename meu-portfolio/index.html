@@ -96,10 +96,34 @@
  
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:56px}
-  .about-visual{background:var(--card);border:1px solid var(--border);border-radius:16px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-  .about-initials{font-family:'Syne',sans-serif;font-size:80px;font-weight:800;color:var(--muted2);letter-spacing:-.05em;position:relative;z-index:1}
-  .about-visual-ring{position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid var(--border)}
-  .about-visual-ring:nth-child(2){width:280px;height:280px;border-color:#1A1A1A}
+  
+  /* ESTILO ATUALIZADO PARA A SUA FOTO (Quadrado/Retrato com bordas arredondadas) */
+  .about-visual {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    aspect-ratio: 4/5; /* Formato retrato perfeito para fotos de perfil */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+  
+  .about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre o card todo sem distorcer */
+    position: relative;
+    z-index: 1;
+    transition: transform 0.6s ease;
+  }
+  
+  .about-visual:hover .about-image {
+    transform: scale(1.05); /* Pequeno efeito de zoom elegante ao passar o mouse */
+  }
+
   .about-text p{font-size:17px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:20px}
   .about-text strong{color:var(--text);font-weight:500}
   .skill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
@@ -321,9 +345,9 @@
       </div>
     </div>
     <div class="about-visual reveal">
-      <div class="about-visual-ring"></div>
-      <div class="about-visual-ring"></div>
-      <div class="about-initials">RP</div>
+      
+      <img src="renato.jpg.png" alt="Renato Prazinho" class="about-image">
+      
     </div>
   </div>
 </section>
